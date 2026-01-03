@@ -3,6 +3,7 @@ import { Main } from './components/utils/styled_components'
 import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider, Navigate } from 'react-router-dom';
 import Home from './routes/home';
 import Detail from './routes/detail';
+import NotFound from './routes/notfound';
 import './App.css'
 
 function router() {
@@ -12,7 +13,9 @@ function router() {
         <Route path='/home' element={<Home />} />
         <Route path='/detail/:breed' element={<Detail />} />
         <Route path='/detail/:breed/:subbreed' element={<Detail />} />
+        <Route path='/notfound' element={<NotFound />} />
         <Route path='/' element={<Navigate to="/home" />} />
+        <Route path='*' element={<Navigate to="/notfound" />} />
       </Route>
     )
   );
