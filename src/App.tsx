@@ -10,6 +10,7 @@ function router() {
     createRoutesFromElements(
       <Route>
         <Route path='/home' element={<Home />} />
+        <Route path='/detail/:breed' element={<Detail />} />
         <Route path='/detail/:breed/:subbreed' element={<Detail />} />
         <Route path='/' element={<Navigate to="/home" />} />
       </Route>
