@@ -1,4 +1,3 @@
-import React from 'react';
 import { Icon } from '../components/utils/styled_components';
 import { Link } from 'react-router-dom';
 import DogDetail from '../components/dogdetail/dogdetail';

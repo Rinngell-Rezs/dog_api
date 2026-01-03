@@ -23,7 +23,7 @@ function App() {
     <Main.Wrapper>
       <Main.Header>
         <div id="row" style={{ alignItems: "center", justifyContent: "center", height: "100%", display: "grid", gridTemplateColumns: "auto auto 1fr", gridTemplateRows: "1fr" }}>
-          <img src="https://dog.ceo/img/dog-api-logo.svg" style={{ height: "8vh", margin: "0 2vw", display: "inline-block" }} />
+          <img src="https://dog.ceo/img/dog-api-logo.svg" style={{ height: "8vh", margin: "0 2vw", display: "inline-block" }} alt="Dog API Logo" />
           <h2>Dog API Tech Test</h2>
         </div>
       </Main.Header>

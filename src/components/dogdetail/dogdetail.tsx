@@ -15,7 +15,6 @@ function DogDetail() {
                     setSubbreedImage(data.message);
                 })
                 .catch(error => console.error('Error fetching breed image:', error));
-            return;
         } else {
 
             fetch(`https://dog.ceo/api/breed/${breed}/${subbreed}/images/random`)
@@ -28,7 +27,8 @@ function DogDetail() {
     }, [breed, subbreed]);
 
     function downloadImage() {
-        saveAs(subbreedImage, `${subbreed === '' ? breed : `${subbreed}-${breed}`}.jpg`);
+        const fullName = `${subbreed}-${breed}`;
+        saveAs(subbreedImage, `${subbreed === '' ? breed : fullName}.jpg`);
     }
     return (
         <div style={{ marginTop: '2vh' }}>

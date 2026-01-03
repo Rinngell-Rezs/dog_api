@@ -1,6 +1,6 @@
 import React from 'react'
 
-function DogCard({ subbreed, breed }: { subbreed: string; breed: string }) {
+function DogCard({ subbreed, breed }: { subbreed: Readonly<string>; breed: Readonly<string> }) {
 
     const [subbreedImage, setSubbreedImage] = React.useState<string>('');
 
@@ -13,9 +13,7 @@ function DogCard({ subbreed, breed }: { subbreed: string; breed: string }) {
                     setSubbreedImage(data.message);
                 })
                 .catch(error => console.error('Error fetching breed image:', error));
-            return;
         } else {
-
             fetch(`https://dog.ceo/api/breed/${breed}/${subbreed}/images/random`)
                 .then(response => response.json())
                 .then(data => {
