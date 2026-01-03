@@ -8,6 +8,8 @@ function Home() {
     const [subbreeds, setSubbreeds] = React.useState<string[]>([]);
 
     React.useEffect(() => {
+        localStorage.setItem('breed', '');
+        localStorage.setItem('subbreed', '');
         fetch('https://dog.ceo/api/breeds/list/all')
             .then(response => response.json())
             .then(data => {
@@ -52,7 +54,11 @@ function Home() {
                     <h2>Subrazas disponibles para {breed}:</h2>
                     <div style={{ gridTemplateColumns: 'auto auto auto', display: 'grid', justifyContent: 'center' }}>
                         {subbreeds.map((subbreed) => (
-                            <Link to={`/detail/${breed}/${subbreed}`} key={subbreed} style={{ margin: '1vh' }}>
+                            <Link to={`/detail/${breed}/${subbreed}`} key={subbreed} style={{ margin: '1vh' }} onClick={
+                                () => {
+                                    localStorage.setItem("breed", breed);
+                                    localStorage.setItem("subbreed", subbreed)
+                                }}>
                                 <DogCard key={subbreed} subbreed={subbreed} breed={breed} />
                             </Link>
                         ))}
@@ -63,7 +69,11 @@ function Home() {
                 <div>
                     <h2>No hay subrazas disponibles para {breed}.</h2>
                     <div style={{ gridTemplateColumns: '1fr', display: 'grid', justifyContent: 'center' }}>
-                        <Link to={`/detail/${breed}`} style={{ margin: '1vh' }}>
+                        <Link to={`/detail/${breed}`} style={{ margin: '1vh' }} onClick={
+                            () => {
+                                localStorage.setItem("breed", breed);
+                                localStorage.setItem("subbreed", '')
+                            }}>
                             <DogCard subbreed={''} breed={breed} />
                         </Link>
                     </div>
