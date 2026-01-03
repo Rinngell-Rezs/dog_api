@@ -1,34 +1,40 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
+import { Main } from './components/utils/styled_components'
+import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider, Navigate } from 'react-router-dom';
+import Home from './routes/home';
+import Detail from './routes/detail';
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+function router() {
+  return createBrowserRouter(
+    createRoutesFromElements(
+      <Route>
+        <Route path='/home' element={<Home />} />
+        <Route path='/detail/:breed/:subbreed' element={<Detail />} />
+        <Route path='/' element={<Navigate to="/home" />} />
+      </Route>
+    )
+  );
+}
 
+function App() {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <Main.Wrapper>
+      <Main.Header>
+        <div id="row" style={{ alignItems: "center", justifyContent: "center", height: "100%", display: "grid", gridTemplateColumns: "auto auto 1fr", gridTemplateRows: "1fr" }}>
+          <img src="https://dog.ceo/img/dog-api-logo.svg" style={{ height: "8vh", margin: "0 2vw", display: "inline-block" }} />
+          <h2>Dog API Tech Test</h2>
+        </div>
+      </Main.Header>
+      <Main.Content>
+        <div style={{ height: 'max-content' }}>
+          <RouterProvider router={router()} />
+        </div>
+
+      </Main.Content>
+      <Main.Footer></Main.Footer>
+      <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet" />
+    </Main.Wrapper >
   )
 }
 
